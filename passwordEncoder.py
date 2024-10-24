@@ -1,3 +1,4 @@
+# Adnan Sanaulla and Jake Marotta
 def encode(password):
     encoded_password = ""
     for char in password:
@@ -5,13 +6,21 @@ def encode(password):
         encoded_password += str(encoded_char)
     return encoded_password
 
+def decode(password):
+    decoded_password = ""
+    for char in password:
+        decoded_char = (int(char) - 3) % 10
+        decoded_password += str(decoded_char)
+    return decoded_password
+
 def main():
     while True:
         print("\nMenu:")
         print("1. Encode Password")
-        print("2. Quit")
+        print("2. Decode Password")
+        print("3. Quit")
 
-        choice = input("Enter your choice (1-2): ")
+        choice = input("Enter your choice (1-3): ")
 
         if choice == "1":
             password = input("Enter an 8-digit password (integers only): ")
@@ -21,6 +30,11 @@ def main():
             else:
                 print("Invalid password. Please enter an 8-digit integer.")
         elif choice == "2":
+            password = input("Enter an 8-digit encoded password (integers only): ")
+            if len(password) == 8 and password.isdigit():
+                decoded_password = decode(password)
+                print("Decoded Password:", decoded_password)
+        elif choice == "3":
             print("Goodbye!")
             break
         else:
